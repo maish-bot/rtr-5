@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read the Room Book Club</title>
+<meta name="description" content="Read the Room is a book club for women in Birmingham. Monthly picks, real discussion, and a room full of people who get it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Lora:ital,wght@0,400;0,500;1,400&family=Mulish:wght@300;400;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mocha:#4E3326;
+    --mocha-2:#3A251B;
+    --latte:#A67C5F;
+    --sand:#D9C3A5;
+    --cream:#F6EEE3;
+    --cream-2:#EDE1CF;
+    --rose:#D4A0A0;
+    --rose-pale:#F2DAD5;
+    --rose-dusk:#9C5B63;
+    --ink:#2E1E16;
+    --display:"Italiana", "Didot", serif;
+    --serif:"Lora", Georgia, serif;
+    --body:"Mulish", system-ui, sans-serif;
+    --sign:"Mrs Saint Delafield", cursive;
+    /* brown tartan */
+    --tartan:
+      repeating-linear-gradient(90deg, rgba(58,37,27,.55) 0 30px, transparent 30px 60px, rgba(217,195,165,.22) 60px 64px, transparent 64px 70px, rgba(212,160,160,.45) 70px 72px, transparent 72px 120px),
+      repeating-linear-gradient(0deg, rgba(58,37,27,.55) 0 30px, transparent 30px 60px, rgba(217,195,165,.22) 60px 64px, transparent 64px 70px, rgba(212,160,160,.45) 70px 72px, transparent 72px 120px),
+      #6B4836;
+    /* soft cream gingham */
+    --gingham:
+      repeating-linear-gradient(90deg, rgba(166,124,95,.14) 0 14px, transparent 14px 28px),
+      repeating-linear-gradient(0deg, rgba(166,124,95,.14) 0 14px, transparent 14px 28px),
+      #F3E8DA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{background:var(--cream);color:var(--ink);font-family:var(--body);font-weight:300;font-size:18px;line-height:1.7;overflow-x:hidden}
+  a{color:inherit}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+  .sm{font-size:12px;font-weight:600;letter-spacing:.26em;text-transform:uppercase}
+  .sign{font-family:var(--sign);font-weight:400;line-height:1;color:var(--rose-dusk)}
+  h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,5vw,66px);line-height:1.05}
+  h2 i{font-family:var(--serif);font-style:italic;color:var(--rose-dusk);font-size:.82em}
+  .btn{display:inline-block;font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;padding:17px 30px;background:var(--rose);color:var(--mocha-2);border:1px solid var(--rose);transition:.25s;cursor:pointer}
+  .btn:hover{background:var(--rose-pale);border-color:var(--rose-pale)}
+  .btn.ghost{background:transparent;color:var(--cream);border-color:rgba(246,238,227,.6)}
+  .btn.ghost:hover{background:rgba(246,238,227,.1)}
+  .btn.dark{background:var(--mocha);border-color:var(--mocha);color:var(--cream)}
+  .btn.dark:hover{background:var(--rose-dusk);border-color:var(--rose-dusk)}
+
+  /* Hero */
+  .hero{background:var(--tartan);color:var(--cream);position:relative}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:24px;padding-bottom:24px}
+  .logo{text-decoration:none;font-family:var(--display);font-size:30px;letter-spacing:.04em;background:var(--mocha-2);padding:8px 20px 6px;border:1px solid rgba(217,195,165,.4)}
+  header nav{display:flex;gap:28px;background:var(--mocha-2);padding:12px 24px;border:1px solid rgba(217,195,165,.4)}
+  header nav a{text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+  header nav a:hover{color:var(--rose)}
+  .plate{max-width:760px;margin:40px auto 0;background:var(--cream);color:var(--ink);text-align:center;padding:16px;position:relative;box-shadow:0 40px 70px -30px rgba(0,0,0,.6);transform:translateY(80px)}
+  .plate .in{border:1px solid var(--latte);padding:56px 60px 52px;position:relative}
+  .plate .in:before{content:"";position:absolute;inset:6px;border:1px solid var(--sand);pointer-events:none}
+  .plate .sign{font-size:52px;display:block;margin-bottom:4px}
+  .plate h1{font-family:var(--display);font-weight:400;font-size:clamp(42px,6vw,76px);line-height:1.04}
+  .plate h1 i{font-family:var(--serif);color:var(--rose-dusk);font-size:.8em}
+  .plate p{color:#6A5244;max-width:30em;margin:22px auto 32px}
+  .plate .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .plate .ctas .btn.ghost{color:var(--mocha);border-color:var(--latte)}
+  .plate .ctas .btn.ghost:hover{background:var(--cream-2)}
+  .bow{position:absolute;top:-34px;left:50%;transform:translateX(-50%);width:120px}
+  .hero-space{height:10px}
+
+  .stats{display:flex;justify-content:center;gap:60px;flex-wrap:wrap;padding:140px 0 40px;text-align:center}
+  .stats b{display:block;font-family:var(--display);font-weight:400;font-size:52px;line-height:1;color:var(--mocha)}
+  .stats span{font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--latte)}
+  .dots{display:flex;justify-content:center;gap:10px;margin:20px 0 0}
+  .dots i{width:6px;height:6px;border-radius:50%;background:var(--rose)}
+
+  section{padding:110px 0}
+  .head{text-align:center;margin-bottom:60px}
+  .head .sign{font-size:48px;display:block}
+
+  /* About */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;border:1px solid var(--sand)}
+  .about .txt{padding:60px 56px}
+  .about .txt p{color:#5C4639}
+  .about .txt p+p{margin-top:16px}
+  .about .txt h2{margin:10px 0 24px}
+  .about .side{background:var(--gingham);display:flex;align-items:center;justify-content:center;padding:50px}
+  .oval{width:260px;aspect-ratio:3/4;border-radius:50%;background:linear-gradient(165deg,#F4E6DD,#E2C7BD);border:10px solid var(--cream);box-shadow:0 0 0 1px var(--rose),0 24px 40px -20px rgba(46,30,22,.45);display:flex;align-items:flex-end;justify-content:center;padding-bottom:40px;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--latte);position:relative}
+  .oval .note{position:absolute;bottom:-26px;right:-80px;background:var(--rose-dusk);color:var(--cream);padding:16px 20px;font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.35;width:200px;text-transform:none;letter-spacing:0;font-weight:400;box-shadow:0 14px 30px -14px rgba(46,30,22,.5)}
+
+  /* Bookmarks */
+  .marks{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:28px;align-items:start}
+  .mark{clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 34px),0 100%);padding:44px 34px 90px;position:relative}
+  .mark .sm{opacity:.85}
+  .mark h3{font-family:var(--display);font-weight:400;font-size:40px;line-height:1.05;margin:14px 0 8px}
+  .mark .by{font-family:var(--serif);font-style:italic}
+  .mark p{font-size:16px;margin:16px 0 24px}
+  .mark.m1{background:var(--rose-pale);color:var(--ink)}
+  .mark.m1 .by{color:var(--rose-dusk)}
+  .mark.m1 .stars{color:var(--rose-dusk);letter-spacing:3px;font-size:14px}
+  .mark.m2{background:var(--tartan);color:var(--cream)}
+  .mark.m2 .box{background:var(--mocha-2);padding:30px 26px;border:1px solid rgba(217,195,165,.35)}
+  .mark.m2 .date{font-family:var(--display);font-size:80px;line-height:.9}
+  .mark.m2 .date span{font-family:var(--serif);font-style:italic;font-size:26px;margin-left:8px}
+  .mark.m3{background:var(--mocha);color:var(--cream)}
+  .mark.m3 .sign{color:var(--rose);font-size:44px;display:block;margin-top:8px}
+  .mark.m3 ul{list-style:none;margin-top:16px}
+  .mark.m3 li{padding:10px 0;border-top:1px solid rgba(246,238,227,.15);font-size:16px}
+  .mark.m3 li:before{content:"\2661";color:var(--rose);margin-right:10px}
+  .tassel{position:absolute;top:0;left:50%;width:2px;height:26px;background:currentColor;opacity:.4}
+
+  /* Archive */
+  .archive{background:var(--cream-2)}
+  .arch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  .bk{all:unset;cursor:pointer;display:grid;grid-template-columns:120px 1fr;gap:28px;align-items:center;background:var(--cream);padding:22px;border:1px solid var(--sand);transition:.25s}
+  .bk:hover{border-color:var(--rose);box-shadow:0 18px 34px -24px rgba(46,30,22,.6)}
+  .bk:focus-visible{outline:2px solid var(--rose-dusk);outline-offset:3px}
+  .bk .c{aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-family:var(--display);font-size:17px;line-height:1.15;color:var(--cream);box-shadow:inset 5px 0 0 rgba(0,0,0,.15)}
+  .bk .sm{color:var(--latte);font-size:11px}
+  .bk h3{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.1;margin:6px 0 2px}
+  .bk .by{font-family:var(--serif);font-style:italic;color:#6A5244;font-size:16px}
+  .bk .open{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--rose-dusk);border-bottom:1px solid var(--rose)}
+  dialog{border:0;background:var(--cream);color:var(--ink);padding:16px;max-width:620px;width:calc(100% - 32px);margin:auto}
+  dialog::backdrop{background:rgba(46,30,22,.6)}
+  dialog .in{border:1px solid var(--sand);padding:40px 40px 36px}
+  dialog .sm{color:var(--rose-dusk)}
+  dialog h3{font-family:var(--display);font-weight:400;font-size:40px;line-height:1.05;margin:10px 0 4px}
+  dialog .by{font-family:var(--serif);font-style:italic;color:#6A5244}
+  dialog p{margin:18px 0;color:#5C4639}
+  dialog blockquote{font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.45;padding:18px 22px;background:var(--rose-pale)}
+  dialog .phs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+  dialog .phs div{aspect-ratio:1;background:var(--gingham)}
+  dialog .x{position:absolute;top:22px;right:26px;background:none;border:0;font-size:28px;cursor:pointer;color:var(--mocha)}
+
+  /* Moments */
+  .film{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:24px;align-items:end}
+  .film figure .ph{background:linear-gradient(165deg,#F1E1D6,#DFC4B8);border:1px solid var(--sand);display:flex;align-items:flex-end;padding:14px;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--latte)}
+  .film figure:nth-child(1) .ph{aspect-ratio:3/4;border-radius:200px 200px 0 0}
+  .film figure:nth-child(2) .ph{aspect-ratio:4/5;outline:1px solid var(--rose);outline-offset:10px}
+  .film figure:nth-child(3) .ph{aspect-ratio:3/4;border-radius:50%}
+  .film figcaption{font-family:var(--serif);font-style:italic;color:#6A5244;margin-top:14px;text-align:center}
+
+  /* Quote */
+  .q-sec{background:var(--rose-pale);text-align:center}
+  .q-sec blockquote{font-family:var(--display);font-size:clamp(30px,3.8vw,50px);line-height:1.2;max-width:900px;margin:0 auto;min-height:3.6em;display:flex;align-items:center;justify-content:center;transition:opacity .3s}
+  .q-sec .who{margin-top:20px;font-family:var(--sign);font-size:48px;color:var(--rose-dusk);line-height:1}
+  .q-sec .where{font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--latte)}
+  .q-nav{display:flex;justify-content:center;gap:12px;margin-top:30px}
+  .q-nav button{width:12px;height:12px;border-radius:50%;border:1px solid var(--rose-dusk);background:none;cursor:pointer;padding:0}
+  .q-nav button.on{background:var(--rose-dusk)}
+
+  /* Updates */
+  .ups{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .up{border:1px solid var(--sand);background:#FBF6EF;display:flex;flex-direction:column}
+  .up .band{height:10px;background:var(--tartan)}
+  .up .in{padding:30px 28px;display:flex;flex-direction:column;flex:1}
+  .up .sm{color:var(--rose-dusk);font-size:11px}
+  .up .d{font-family:var(--serif);font-style:italic;color:var(--latte);font-size:15px}
+  .up h3{font-family:var(--display);font-weight:400;font-size:32px;line-height:1.1;margin:14px 0 8px}
+  .up p{color:#5C4639;font-size:16px;flex:1}
+  .up .row{display:flex;justify-content:space-between;align-items:center;margin-top:22px;padding-top:16px;border-top:1px solid var(--sand)}
+  .up .row a{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--mocha)}
+  .up .row a:hover{color:var(--rose-dusk)}
+  .copy{background:none;border:0;cursor:pointer;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--rose-dusk)}
+  .copy:hover{text-decoration:underline}
+
+  /* Letter */
+  .letter{background:var(--tartan);padding:90px 0}
+  .letter .card{max-width:720px;margin:0 auto;background:var(--cream);padding:16px;text-align:center}
+  .letter .card .in{border:1px solid var(--latte);padding:52px 40px}
+  .letter .sign{font-size:48px;display:block}
+  .letter p{color:#6A5244;max-width:28em;margin:14px auto 28px}
+  .letter form{display:flex;max-width:480px;margin:0 auto;border:1px solid var(--latte)}
+  .letter input{flex:1;min-width:0;border:0;background:transparent;font-family:var(--body);font-size:16px;padding:0 18px;outline:none;color:var(--ink)}
+  .letter form .btn{border:0}
+  .letter small{display:block;margin-top:14px;font-size:14px;color:var(--latte)}
+
+  footer{background:var(--mocha-2);color:var(--cream);padding:70px 0 30px}
+  .foot{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px}
+  .foot .brand{font-family:var(--display);font-size:42px;line-height:1}
+  .foot p{opacity:.7;margin-top:12px;max-width:22em;font-size:16px}
+  .foot h4{font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);margin-bottom:14px}
+  .foot a{display:block;text-decoration:none;opacity:.85;font-size:16px;padding:3px 0}
+  .foot a:hover{opacity:1;color:var(--rose-pale)}
+  .fine{margin-top:50px;padding-top:22px;border-top:1px solid rgba(246,238,227,.15);display:flex;justify-content:space-between;font-size:14px;opacity:.6}
+
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--mocha-2);color:var(--cream);font-size:15px;padding:12px 22px;opacity:0;transition:.25s;pointer-events:none}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  @media (max-width:900px){
+    .wrap{padding:0 20px}
+    header nav{display:none}
+    .logo{font-size:24px}
+    .plate{margin-top:20px;transform:translateY(60px)}
+    .plate .in{padding:44px 22px 36px}
+    .plate .sign{font-size:40px}
+    .bow{width:96px;top:-28px}
+    .stats{gap:30px 40px;padding-top:110px}
+    .stats div{width:40%}
+    .stats b{font-size:42px}
+    section{padding:80px 0}
+    .about{grid-template-columns:1fr}
+    .about .txt{padding:40px 24px}
+    .about .side{padding:50px 20px 70px}
+    .oval{width:200px}
+    .oval .note{right:-50px;width:170px;font-size:15px}
+    .marks{grid-template-columns:1fr;gap:20px}
+    .arch-grid{grid-template-columns:1fr}
+    .bk{grid-template-columns:90px 1fr;gap:18px;padding:16px}
+    .bk h3{font-size:24px}
+    .film{grid-template-columns:1fr 1fr}
+    .film figure:nth-child(2){grid-column:span 2;order:-1}
+    .ups{grid-template-columns:1fr}
+    .letter{padding:50px 0}
+    .letter .card .in{padding:40px 20px}
+    .letter form{flex-direction:column}
+    .letter input{padding:16px}
+    .foot{grid-template-columns:1fr}
+    .fine{flex-direction:column;gap:4px}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero" id="top">
+  <header><div class="wrap">
+    <a class="logo" href="#top">Read the Room</a>
+    <nav><a href="#about">About</a><a href="#month">This month</a><a href="#archive">Archive</a><a href="#moments">Moments</a><a href="updates.html">Updates</a></nav>
+  </div></header>
+  <div class="wrap">
+    <div class="plate">
+      <svg class="bow" viewBox="0 0 120 56" aria-hidden="true"><path d="M60 26 C 38 0, 6 4, 9 25 C 12 44, 42 42, 60 26 Z M60 26 C 82 0, 114 4, 111 25 C 108 44, 78 42, 60 26 Z" fill="#D4A0A0"/><path d="M60 26 L 45 54 M60 26 L 75 54" stroke="#D4A0A0" stroke-width="7" stroke-linecap="round"/><circle cx="60" cy="26" r="8" fill="#9C5B63"/></svg>
+      <div class="in">
+        <span class="sign">a book club for women</span>
+        <h1>A safe place for storytellers, thinkers, and <i>warm hearts</i></h1>
+        <p>Monthly picks, real discussion, and a room full of people who get it. No pressure to have finished the book. Just show up.</p>
+        <div class="ctas"><a class="btn dark" href="#month">Join the next meet-up</a><a class="btn ghost" href="#archive">Our reading list</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-space"></div>
+</div>
+
+<div class="wrap">
+  <div class="stats">
+    <div><b>180+</b><span>Members</span></div>
+    <div><b>24</b><span>Books read</span></div>
+    <div><b>12</b><span>Meet-ups a year</span></div>
+    <div><b>4.9</b><span>Average rating</span></div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i></div>
+</div>
+
+<section id="about"><div class="wrap">
+  <div class="about">
+    <div class="txt">
+      <span class="sm" style="color:var(--rose-dusk)">Who we are</span>
+      <h2>Started by friends, grown by <i>word of mouth</i></h2>
+      <p>Read the Room began in 2025 as a handful of friends meeting up to talk about the books they couldn&rsquo;t stop thinking about. It&rsquo;s grown into a proper community, with new faces every month, one book at a time.</p>
+      <p>No pressure to have finished it, no judgment if you didn&rsquo;t. Just good conversation, good company, and better book recommendations than any algorithm.</p>
+    </div>
+    <div class="side"><div class="oval">Photo<span class="note">&ldquo;Every book club should feel like coming home.&rdquo;</span></div></div>
+  </div>
+</div></section>
+
+<section id="month" style="padding-top:20px"><div class="wrap">
+  <div class="head"><span class="sign">this month</span><h2>What we&rsquo;re reading <i>&amp; when we meet</i></h2></div>
+  <div class="marks">
+    <div class="mark m1"><span class="tassel"></span>
+      <span class="sm">September pick</span>
+      <h3>Book Title Here</h3>
+      <div class="by">by Author Name</div>
+      <p>A short, spoiler-free blurb about why this month&rsquo;s pick was chosen goes here: what drew the group to it and what to expect from the discussion.</p>
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color:#6A5244;letter-spacing:0">4.8 from members</span></div>
+    </div>
+    <div class="mark m2"><span class="tassel"></span>
+      <div class="box">
+        <span class="sm">Monthly discussion night</span>
+        <div class="date" style="margin-top:14px">14<span>October</span></div>
+        <p>7:00 PM. Location details are shared when you book.</p>
+        <a class="btn" href="https://www.eventbrite.com/e/REPLACE-WITH-YOUR-EVENTBRITE-EVENT-URL" target="_blank" rel="noopener">Get tickets</a>
+      </div>
+    </div>
+    <div class="mark m3"><span class="tassel"></span>
+      <span class="sm">Your first time?</span>
+      <span class="sign">you&rsquo;re so welcome</span>
+      <ul>
+        <li>No pressure to have finished it</li>
+        <li>No judgment if you didn&rsquo;t</li>
+        <li>Good conversation, good company</li>
+        <li>New faces every month</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="archive" id="archive"><div class="wrap">
+  <div class="head"><span class="sign">the archive</span><h2>Every book we&rsquo;ve <i>read together</i></h2></div>
+  <div class="arch-grid">
+    <button class="bk" data-book="0"><div class="c" style="background:#6B4836">Evelyn Hugo</div><div><span class="sm">August 2026</span><h3>The Seven Husbands of Evelyn Hugo</h3><div class="by">Taylor Jenkins Reid</div><span class="open">Look back</span></div></button>
+    <button class="bk" data-book="1"><div class="c" style="background:#D4A0A0;color:#2E1E16">Lessons in Chemistry</div><div><span class="sm">June 2026</span><h3>Lessons in Chemistry</h3><div class="by">Bonnie Garmus</div><span class="open">Look back</span></div></button>
+    <button class="bk" data-book="2"><div class="c" style="background:#A67C5F">Tomorrow, and Tomorrow, and Tomorrow</div><div><span class="sm">April 2026</span><h3>Tomorrow, and Tomorrow, and Tomorrow</h3><div class="by">Gabrielle Zevin</div><span class="open">Look back</span></div></button>
+    <button class="bk" data-book="3"><div class="c" style="background:#3A251B;color:#F2DAD5">Circe</div><div><span class="sm">February 2026</span><h3>Circe</h3><div class="by">Madeline Miller</div><span class="open">Look back</span></div></button>
+  </div>
+</div></section>
+
+<section id="moments"><div class="wrap">
+  <div class="head"><span class="sign">captured moments</span><h2>A night with us <i>looks like this</i></h2><p style="color:#6A5244;margin-top:12px">Real photos from our meet-ups are coming soon.</p></div>
+  <div class="film">
+    <figure><div class="ph">Photo</div><figcaption>Coffee and conversation</figcaption></figure>
+    <figure><div class="ph">Group photo</div><figcaption>The whole room, end of the night</figcaption></figure>
+    <figure><div class="ph">Photo</div><figcaption>The book pile</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="q-sec"><div class="wrap">
+  <span class="sm" style="color:var(--rose-dusk)">Members say</span>
+  <blockquote id="vq" style="margin-top:24px">&ldquo;Honestly the best part of my month. I&rsquo;ve read more in the last year than the five before it combined.&rdquo;</blockquote>
+  <div class="who" id="vw">Aisha</div>
+  <div class="where" id="vp">Birmingham</div>
+  <div class="q-nav"><button class="on" data-q="0" aria-label="Aisha's review"></button><button data-q="1" aria-label="Priya's review"></button><button data-q="2" aria-label="Maya's review"></button></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head"><span class="sign">from the club</span><h2>Latest <i>updates</i></h2></div>
+  <div class="ups">
+    <article class="up"><div class="band"></div><div class="in"><span class="sm">Community</span><span class="d">September 2026</span><h3>Welcome to new members</h3><p>What to expect at your first meet-up, and how the discussion usually runs.</p><div class="row"><a href="updates.html">Read more</a><button class="copy" data-title="Welcome to new members">Share this</button></div></div></article>
+    <article class="up"><div class="band"></div><div class="in"><span class="sm">Recap</span><span class="d">August 2026</span><h3>August recap</h3><p>How the last discussion night went, and what the group&rsquo;s thinking for next time.</p><div class="row"><a href="updates.html">Read more</a><button class="copy" data-title="August recap">Share this</button></div></div></article>
+    <article class="up"><div class="band"></div><div class="in"><span class="sm">Book selection</span><span class="d">July 2026</span><h3>Summer reading list</h3><p>A few extra picks for anyone wanting more between meet-ups.</p><div class="row"><a href="updates.html">Read more</a><button class="copy" data-title="Summer reading list">Share this</button></div></div></article>
+  </div>
+  <div style="text-align:center;margin-top:44px"><a class="btn dark" href="updates.html">All updates</a></div>
+</div></section>
+
+<div class="letter"><div class="wrap"><div class="card"><div class="in">
+  <span class="sign">the monthly letter</span>
+  <h2>Never miss <i>a chapter</i></h2>
+  <p>The month&rsquo;s pick, event dates, and a few good recommendations, straight to your inbox once a month.</p>
+  <form id="letterForm"><input type="email" required placeholder="Your email address" aria-label="Email address"><button class="btn" type="submit">Subscribe</button></form>
+  <small>We&rsquo;ll never share your email. Unsubscribe any time.</small>
+</div></div></div></div>
+
+<footer><div class="wrap">
+  <div class="foot">
+    <div><div class="brand">Read the Room</div><p>A safe place for storytellers, thinkers, and warm hearts. Est. 2025.</p></div>
+    <div><h4>Follow along</h4><a href="https://instagram.com/readtheroombookclub" target="_blank" rel="noopener">Instagram</a><a href="https://facebook.com/groups/readtheroombookclub" target="_blank" rel="noopener">Facebook group</a><a href="https://tiktok.com/@readtheroombookclub" target="_blank" rel="noopener">TikTok</a></div>
+    <div><h4>Say hello</h4><a href="mailto:hello@readtheroombookclub.com">hello@readtheroombookclub.com</a><a href="updates.html">Updates</a><a href="#month">Tickets</a></div>
+  </div>
+  <div class="fine"><span>&copy; 2026 Read the Room Book Club</span><span>Birmingham &amp; Solihull</span></div>
+</div></footer>
+
+<dialog id="bookDialog">
+  <button class="x" aria-label="Close" onclick="this.closest('dialog').close()">&times;</button>
+  <div class="in">
+    <span class="sm" id="dDate"></span>
+    <h3 id="dTitle"></h3>
+    <div class="by" id="dAuthor"></div>
+    <p id="dBlurb"></p>
+    <blockquote id="dQuote"></blockquote>
+    <div class="phs"><div></div><div></div><div></div></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+<script>
+  // Archive: swap the gingham squares in the pop-up for real photos when Tasha sends them.
+  const books = [
+    { title:'The Seven Husbands of Evelyn Hugo', author:'Taylor Jenkins Reid', date:'August 2026',
+      blurb:'Our biggest turnout yet. Everyone had a theory about Evelyn by the interval, and the debate carried on well past closing time.',
+      quote:'“I did not expect to cry into my wine over a fictional Hollywood starlet, but here we are.” Priya' },
+    { title:'Lessons in Chemistry', author:'Bonnie Garmus', date:'June 2026',
+      blurb:'A summer rooftop meet-up with iced tea and strong opinions about Elizabeth Zott. Several members left wanting to take up rowing.',
+      quote:'“Six-Thirty might be the best character in anything I’ve read this year.” Maya' },
+    { title:'Tomorrow, and Tomorrow, and Tomorrow', author:'Gabrielle Zevin', date:'April 2026',
+      blurb:'A quieter, more reflective night. This one split the room, which made for one of our best discussions yet.',
+      quote:'“Genuinely changed how I think about creative partnership.” Aisha' },
+    { title:'Circe', author:'Madeline Miller', date:'February 2026',
+      blurb:'Our first mythology pick, complete with a homemade Greek-inspired spread from one of our members. We may make this a tradition.',
+      quote:'“Made me want to read every myth I half-remember from school again.” Priya' }
+  ];
+  const dlg = document.getElementById('bookDialog');
+  document.querySelectorAll('.bk').forEach(b => b.addEventListener('click', () => {
+    const k = books[b.dataset.book];
+    dDate.textContent = k.date; dTitle.textContent = k.title; dAuthor.textContent = 'by ' + k.author;
+    dBlurb.textContent = k.blurb; dQuote.textContent = k.quote;
+    dlg.showModal();
+  }));
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+  const reviews = [
+    ['Honestly the best part of my month. I’ve read more in the last year than the five before it combined.', 'Aisha', 'Birmingham'],
+    ['Walked in knowing nobody, left with a whole new group of friends who actually read.', 'Priya', 'Solihull'],
+    ['It’s the one evening a month I actually feel present. No phones, just books and good people.', 'Maya', 'Birmingham']
+  ];
+  document.querySelectorAll('.q-nav button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.q-nav button').forEach(x => x.classList.toggle('on', x === b));
+    const r = reviews[b.dataset.q];
+    vq.style.opacity = 0;
+    setTimeout(() => { vq.textContent = '“' + r[0] + '”'; vw.textContent = r[1]; vp.textContent = r[2]; vq.style.opacity = 1; }, 200);
+  }));
+
+  const toast = document.getElementById('toast'); let t;
+  function say(m){ toast.textContent = m; toast.classList.add('show'); clearTimeout(t); t = setTimeout(() => toast.classList.remove('show'), 2400); }
+  document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
+    const done = () => say('Link to “' + b.dataset.title + '” copied');
+    navigator.clipboard ? navigator.clipboard.writeText(location.origin + '/updates.html').then(done, done) : done();
+  }));
+  document.getElementById('letterForm').addEventListener('submit', e => { e.preventDefault(); e.target.reset(); say('Thank you, see you in your inbox.'); });
+</script>
+</body>
+</html>
